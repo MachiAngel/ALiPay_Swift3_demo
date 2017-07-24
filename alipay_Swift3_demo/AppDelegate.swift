@@ -40,6 +40,42 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    
+    func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        
+        
+        if url.host == "safepay"{
+            
+            
+            AlipaySDK.defaultService().processAuthResult(url, standbyCallback: { (resultDic) in
+                //利用result結果寫相關邏輯
+                print(resultDic)
+                
+            });
+            
+            return true
+        }
+        
+        return true
+    }
+    
+    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
+        
+        if url.host == "safepay"{
+            
+            AlipaySDK.defaultService().processAuthResult(url, standbyCallback: { (resultDic) in
+                //利用result結果寫相關邏輯
+                print(resultDic)
+            });
+            
+            return true
+        }
+        
+        return true
+    }
+    
+    
 
 
 }
