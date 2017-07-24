@@ -9,7 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
+    let rsa2PrivateKey = "請輸入您或後台製作的私鑰" //私鑰rsa2格式
+    let appId = "請輸入公司申請的appid" //公司申請的支付寶appid
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -17,9 +20,9 @@ class ViewController: UIViewController {
 
    
     @IBAction func alipayBtnPressed(_ sender: UIButton) {
-        let rsa2PrivateKey = "請輸入您或後台製作的私鑰" //私鑰rsa2格式
+        
         let order = Order()
-        order.app_id = "請輸入公司申請支付寶的appid"  //公司申請的支付寶appid
+        order.app_id = appId  //公司申請的支付寶appid
         order.method = "alipay.trade.app.pay"//依照官方範例
         order.charset = "utf-8" //依照官方範例
         order.notify_url = "https://xxxxxxxxxx.com" //商品請求結果支付寶異步通知的網址(你們家server後台)
